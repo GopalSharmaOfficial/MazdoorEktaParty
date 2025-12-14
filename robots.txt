@@ -1,0 +1,11 @@
+# Robots.txt for Mazdoor Ekta Party Website
+# https://mazdoorektaparty.org
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://mazdoorektaparty.org/sitemap.xml
+
+# Crawl delay (optional - be kind to server)
+Crawl-delay: 10
