@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media & Forms - Mazdoor Ekta Party</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">Mazdoor Ekta Party</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leadership.html">Leadership</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="constitution.html">Constitution</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="membership.html">Become a Member</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="donate.html">Donate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="media.html">Media</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-light py-4 text-center">
+        <div class="container">
+            <h2>Media & Form Submission Demo</h2>
+            <p class="lead">Two FREE approaches to collect form data</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row g-4">
+            
+            <!-- Approach 1: Google Form -->
+            <div class="col-lg-6">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-google me-2"></i>Approach 1: Google Form</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-primary">Best For:</h6>
+                        <ul class="small">
+                            <li>Quick setup, no coding needed</li>
+                            <li>Automatic data collection in Google Sheets</li>
+                            <li>Built-in spam protection</li>
+                            <li>Free and reliable</li>
+                        </ul>
+                        <hr>
+                        <p class="small text-muted">Click the button below to open a Google Form (you need to create one and replace the URL)</p>
+                        
+                        <div class="d-grid gap-2">
+                            <!-- Replace YOUR_GOOGLE_FORM_URL with actual Google Form URL -->
+                            <a href="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform" 
+                               target="_blank" 
+                               class="btn btn-primary">
+                                <i class="bi bi-box-arrow-up-right me-2"></i>Open Google Form
+                            </a>
+                            
+                            <!-- Or embed in modal -->
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#googleFormModal">
+                                <i class="bi bi-window me-2"></i>Open in Modal
+                            </button>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3 small">
+                            <strong>Setup Instructions:</strong>
+                            <ol class="mb-0 ps-3">
+                                <li>Go to <a href="https://forms.google.com" target="_blank">forms.google.com</a></li>
+                                <li>Create your form with required fields</li>
+                                <li>Click "Send" → Copy link</li>
+                                <li>Replace URL in this button</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approach 2: Google Sheets via Apps Script -->
+            <div class="col-lg-6">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0"><i class="bi bi-table me-2"></i>Approach 2: Google Sheets</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-warning">Best For:</h6>
+                        <ul class="small">
+                            <li>Custom form on your website</li>
+                            <li>Data goes directly to Google Sheets</li>
+                            <li>Free and unlimited submissions</li>
+                            <li>Full control over form design</li>
+                        </ul>
+                        <hr>
+                        
+                        <!-- Google Sheets Form -->
+                        <form id="googleSheetsForm">
+                            <div class="mb-2">
+                                <input type="text" class="form-control form-control-sm" id="gs_name" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-2">
+                                <input type="email" class="form-control form-control-sm" id="gs_email" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-2">
+                                <input type="tel" class="form-control form-control-sm" id="gs_phone" placeholder="Phone Number">
+                            </div>
+                            <div class="mb-2">
+                                <textarea class="form-control form-control-sm" id="gs_message" rows="2" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-warning w-100" id="gsSubmitBtn">
+                                <i class="bi bi-cloud-upload me-2"></i>Send to Google Sheets
+                            </button>
+                        </form>
+                        
+                        <div id="gsResponse" class="mt-2"></div>
+                        
+                        <div class="alert alert-info mt-3 small">
+                            <strong>Setup Instructions:</strong>
+                            <ol class="mb-0 ps-3">
+                                <li>Create a Google Sheet</li>
+                                <li>Go to Extensions → Apps Script</li>
+                                <li>Paste the code (see below)</li>
+                                <li>Deploy as Web App</li>
+                                <li>Copy URL and update script</li>
+                            </ol>
+                            <button class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="modal" data-bs-target="#appsScriptModal">
+                                View Apps Script Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Google Form Modal -->
+    <div class="modal fade" id="googleFormModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Google Form</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <!-- Replace with your actual Google Form embed URL -->
+                    <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" 
+                            width="100%" 
+                            height="500" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0">
+                        Loading…
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apps Script Code Modal -->
+    <div class="modal fade" id="appsScriptModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">Google Apps Script Code</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small">Copy this code and paste it in your Google Sheets Apps Script editor:</p>
+                    <pre class="bg-dark text-light p-3 rounded small" style="overflow-x: auto;"><code>// Google Apps Script Code - Paste in Extensions > Apps Script
+
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  
+  var data = JSON.parse(e.postData.contents);
+  
+  // Add timestamp
+  var timestamp = new Date();
+  
+  // Append row to sheet
+  sheet.appendRow([
+    timestamp,
+    data.name,
+    data.email,
+    data.phone,
+    data.message
+  ]);
+  
+  // Return success response
+  return ContentService
+    .createTextOutput(JSON.stringify({
+      'result': 'success',
+      'message': 'Data saved successfully'
+    }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet(e) {
+  return ContentService
+    .createTextOutput("The script is working!")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
+
+// Set up headers (run this once)
+function setupSheet() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  sheet.getRange(1, 1, 1, 5).setValues([
+    ['Timestamp', 'Name', 'Email', 'Phone', 'Message']
+  ]);
+}</code></pre>
+                    <div class="alert alert-warning small">
+                        <strong>Important:</strong> After pasting, click Deploy → New Deployment → Web App → Set "Who has access" to "Anyone" → Deploy → Copy the URL
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <h5 class="border-bottom pb-2">Mazdoor Ekta Party</h5>
+                    <p>Founded in 2019</p>
+                    <p>"From the upliftment of the last person to the welfare of all."</p>
+                    <div class="mt-3">
+                        <a href="https://www.facebook.com/MazdoorEktaParty" target="_blank" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="https://x.com/MazdoorEktaPty" target="_blank" class="text-white me-3"><i class="bi bi-twitter-x fs-5"></i></a>
+                        <a href="https://www.instagram.com/mazdoorektaparty/" target="_blank" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="https://www.youtube.com/@MazdoorEktaParty" target="_blank" class="text-white me-3"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="https://www.linkedin.com/company/mazdoorektaparty/" target="_blank" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="border-bottom pb-2">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none"><i class="bi bi-chevron-right me-1"></i> About Us</a></li>
+                        <li class="mb-2"><a href="leadership.html" class="text-white text-decoration-none"><i class="bi bi-chevron-right me-1"></i> Leadership</a></li>
+                        <li class="mb-2"><a href="membership.html" class="text-white text-decoration-none"><i class="bi bi-chevron-right me-1"></i> Become a Member</a></li>
+                        <li class="mb-2"><a href="donate.html" class="text-white text-decoration-none"><i class="bi bi-chevron-right me-1"></i> Donate</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="border-bottom pb-2">Contact Us</h5>
+                    <p><i class="bi bi-envelope me-2"></i>mazdoorektaparty@gmail.com</p>
+                    <p><i class="bi bi-telephone me-2"></i>+91 85880 26261</p>
+                    <p><i class="bi bi-geo-alt me-2"></i>B-2/208, Nand Nagri, Shahdara, Delhi -110093</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Mazdoor Ekta Party. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // ============================================
+        // APPROACH 2: Google Sheets via Apps Script
+        // ============================================
+        // IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzADMnquY1CRAc8HJfSHxpR4SyGAagaIsX5dTKuZLTyOobSUHxl1jEQ--HWxRoow4BJ/exec';
+
+        document.getElementById('googleSheetsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('gsSubmitBtn');
+            const responseDiv = document.getElementById('gsResponse');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+            
+            const data = {
+                name: document.getElementById('gs_name').value,
+                email: document.getElementById('gs_email').value,
+                phone: document.getElementById('gs_phone').value,
+                message: document.getElementById('gs_message').value
+            };
+            
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Required for Apps Script
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                responseDiv.innerHTML = '<div class="alert alert-success small py-1">Data sent successfully!</div>';
+                document.getElementById('googleSheetsForm').reset();
+            })
+            .catch(error => {
+                responseDiv.innerHTML = '<div class="alert alert-danger small py-1">Error: ' + error.message + '</div>';
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-cloud-upload me-2"></i>Send to Google Sheets';
+            });
+        });
+    </script>
+</body>
+</html>

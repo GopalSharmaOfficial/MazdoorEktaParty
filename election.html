@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election History - Mazdoor Ekta Party</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">Mazdoor Ekta Party</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="leadership.html">Leadership</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="constitution.html">Constitution</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="membership.html">Become a Member</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="donate.html">Donate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="election.html">Elections</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-light text-center py-4">
+        <div class="container">
+            <h2><i class="bi bi-clipboard-check me-2"></i>Election Participation History</h2>
+            <p class="lead">Our journey in democratic elections</p>
+        </div>
+    </div>
+
+    <!-- Election Content -->
+    <div class="container my-5">
+        <!-- Election Selector -->
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <label for="electionSelect" class="form-label fw-bold">Select Election:</label>
+                <select class="form-select form-select-lg" id="electionSelect">
+                    <option value="">-- Choose an Election --</option>
+                    <option value="delhi2020">Delhi Legislative Assembly election 2020</option>
+                    <option value="bihar2020">Bihar Legislative Assembly election 2020</option>
+                    <option value="bihar2025">Bihar Legislative Assembly election 2025</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Election Summary -->
+        <div id="electionSummary" class="text-center mb-4" style="display: none;">
+            <div class="alert alert-danger">
+                <h5 class="mb-0" id="summaryText"></h5>
+            </div>
+        </div>
+
+        <!-- Candidates Display -->
+        <div id="candidatesContainer" class="row g-4 justify-content-center">
+            <!-- Candidates will be loaded here dynamically -->
+        </div>
+
+        <!-- No Selection Message -->
+        <div id="noSelection" class="text-center py-5">
+            <i class="bi bi-hand-index-thumb text-danger" style="font-size: 4rem;"></i>
+            <h4 class="mt-3">Please select an election from the dropdown above</h4>
+            <p class="text-muted">View our candidates and their performance in various elections</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <h5 class="border-bottom pb-2">Mazdoor Ekta Party</h5>
+                    <p>Founded in 2019</p>
+                    <p>"From the upliftment of the last person to the welfare of all."</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="border-bottom pb-2">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none"><i
+                                    class="bi bi-chevron-right me-1"></i> About Us</a></li>
+                        <li class="mb-2"><a href="leadership.html" class="text-white text-decoration-none"><i
+                                    class="bi bi-chevron-right me-1"></i> Leadership</a></li>
+                        <li class="mb-2"><a href="membership.html" class="text-white text-decoration-none"><i
+                                    class="bi bi-chevron-right me-1"></i> Become a Member</a></li>
+                        <li class="mb-2"><a href="donate.html" class="text-white text-decoration-none"><i
+                                    class="bi bi-chevron-right me-1"></i> Donate</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="border-bottom pb-2">Contact Us</h5>
+                    <p><i class="bi bi-envelope me-2"></i>mazdoorektaparty@gmail.com</p>
+                    <p><i class="bi bi-telephone me-2"></i>+91 85880 26261</p>
+                    <p><i class="bi bi-geo-alt me-2"></i>B-2/208, Nand Nagri, Shahdara, Delhi -110093</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Mazdoor Ekta Party. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Election Data
+        const electionData = {
+            delhi2020: {
+                title: "Delhi Legislative Assembly election, 2020",
+                totalCandidates: 3,
+                candidates: [
+                    {
+                        name: "PRINCE KUMAR",
+                        constituency: "BABARPUR",
+                        votes: 55,
+                        form20Link: "https://www.ceodelhi.gov.in/FORM20/AC-67.pdf",
+                        affidavitLink: "https://affidavit.eci.gov.in/show-profile/eyJpdiI6Im5uVFprbEg0OWV1TWZMTFNZbllLSFE9PSIsInZhbHVlIjoiaGhYRnZETUs4bHR2ZUE1dGQ4b1Q2QT09IiwibWFjIjoiNTE1NjRjYjkwNWFmYjAzYzFiODMxYzhhMTYwZjNhNDMyNjQwOGE0YmQyZDU0YTAyMjBkNTY3ZjZlZWQ4ZjgyNSIsInRhZyI6IiJ9/eyJpdiI6IlpJZDRWTlJGVnZmRE8yVWV3VENMNEE9PSIsInZhbHVlIjoiMkdpcW5sUXJsN0UvL3FLTWRSbkpVdz09IiwibWFjIjoiYzNmYzk3NjhiZmViYzIyZGM3ZGM3MjhjNjIwYjkzNmIyNTgyMTM5NDNkOGJhYzg3MzFkMDg5MDU1OWJiMTZmNiIsInRhZyI6IiJ9/eyJpdiI6IlpmdWZHc2R6NGVVZVJZSFRYZURoTEE9PSIsInZhbHVlIjoiMkpaMW1RWWI3TDFUVnV4amJ6U29zdz09IiwibWFjIjoiOWRkM2I5ZGM0MTFjMzliNTcxNmQ3MzAwNGY5MzI0YzJhOTY1Y2U0N2NhNmNkMWFlYTJlOWFiNTkwNWZjMDg0OCIsInRhZyI6IiJ9/eyJpdiI6IlRYQkJGY1RzOUJnOTRzNmFYZUF2U0E9PSIsInZhbHVlIjoialhCT2pHZGxhamEvd05leFdvaXF5UT09IiwibWFjIjoiMjhjM2I2NDhkMmQ0ZDk5YjYzMmE0M2Y1ZmY1N2FmNjZhYzdlNzVlMDY0YTA4YTgwZDYxZWM5YjEzYjMyYzA4ZiIsInRhZyI6IiJ9/eyJpdiI6Im95a2RFRXJkTy9yek14b01qSjhDakE9PSIsInZhbHVlIjoiMm45UTIzWE1EL0E1cVpYTS9VZXN0QT09IiwibWFjIjoiN2UyNjFjYzU4MWQ3MWRmMzVkZDdjODJhMjEyNWFiNzhkODlhM2I0YWJiM2U1NjM4MWZmYTI3MTQ5ZmJiYzJhMyIsInRhZyI6IiJ9"
+                    },
+                    {
+                        name: "SURENDER KUMAR",
+                        constituency: "MATIALA",
+                        votes: 329,
+                        form20Link: "https://www.ceodelhi.gov.in/FORM20/AC-34.pdf",
+                        affidavitLink: "https://affidavit.eci.gov.in/show-profile/eyJpdiI6IndNSjY2dXdsVUlITkl2OWJOeUdQNGc9PSIsInZhbHVlIjoidEhlOWQ3SU5XSFM2R3pQb3NnR1U0UT09IiwibWFjIjoiYmE0NTYzZDhlODJjYjdiOWE1MDkxNzlhMzg0NGVjNzZiOWRjMmI3YjFkMjk3MWIxN2VmNTU5MmY3MjRiZjJjNyIsInRhZyI6IiJ9/eyJpdiI6IlNQWE1ndWdnYTd0WFplbTI3d0pYMkE9PSIsInZhbHVlIjoiTWpmOEpzUXcycmFwVEFaVDNTemJtUT09IiwibWFjIjoiYWI2ZTQ0ZDVmNzlhNDZhMTc4NWExN2I3ZWEwMmVmMjY0ZDlhM2I0NjNkYmRjYTExNWY1MWE5MjI1ZWRjYzAwZSIsInRhZyI6IiJ9/eyJpdiI6InpSQTBSS01CVkhCTlh3WUVQcmltaGc9PSIsInZhbHVlIjoiRGREZ0dXL1FudTBxQUNFekMzblMzdz09IiwibWFjIjoiOTVmNGQwZjRiNGIxMDBmNmRkNzYxYmQ2NDk0OTY1MDJhMDAyYTRlZDkyODM3MmI0YTA3M2Q4MjRmOTE3YTMzZiIsInRhZyI6IiJ9/eyJpdiI6ImF5NHp3OE5FemlmUDNldzh4YWplWVE9PSIsInZhbHVlIjoiM1pncmdMZGlValQ2Njh2aEkrSHJSZz09IiwibWFjIjoiMDA5MTMyYThjZTc0MmRhMzgyNDI3N2VjYjdmOGEzOTRhODU4ZDRkY2VmMjljMDc2YjFkMmFmMjg2N2RjYWY0MCIsInRhZyI6IiJ9/eyJpdiI6ImZOMWpabU0xQldXQXllZHVzeXp2Qnc9PSIsInZhbHVlIjoiOXhlRk10ZENsTFhzd1J3QzVoaHFqdz09IiwibWFjIjoiYzVmNzk0NTM2MWJhNmRhZGMzNTdhMmVjNDE1ODQ2YmQwNzBlODBiOWVhZjkzODUxYTBjZDIwZDI1MGVmNTc2YSIsInRhZyI6IiJ9"
+                    },
+                    {
+                        name: "LALIT KUMAR",
+                        constituency: "SEEMA PURI (SC)",
+                        votes: 419,
+                        form20Link: "https://www.ceodelhi.gov.in/FORM20/AC-63.pdf",
+                        affidavitLink: "https://affidavit.eci.gov.in/show-profile/eyJpdiI6IjJEYmkwU3QxRC80UUVnSHdENTJwOGc9PSIsInZhbHVlIjoiT09xWkZheTg3ZFNaL1p1RWMvd21jUT09IiwibWFjIjoiN2QzM2Y0M2JhMTVjY2RiYmRiMGQ1MzE5Y2EwMmQ4ODZmOGIzYTM1MTlhNzBlZjIwMmFmMGRlNDA4ZjE1NWUzNyIsInRhZyI6IiJ9/eyJpdiI6IkJuV1FUWkVmTzJMSXo3aU5JMGZjWXc9PSIsInZhbHVlIjoic3Y4di9wWmRieGhLMkRmMDhqTFhGUT09IiwibWFjIjoiMGY5MzdkNjA2OTczZjMzNTYzZWI4ZWE1MDExOWM4OWFmZDExMWQ2ZjU2Mzg2ZTJmYTIyMmIzMzQwZmNlMzEwOCIsInRhZyI6IiJ9/eyJpdiI6Inl6YmlDY05PdE1OZkoydlZ0Tkt1Ync9PSIsInZhbHVlIjoiVlZoWEd0WjAzU0JaSytPaVZXUWN0QT09IiwibWFjIjoiZWI0ODNkNDIzMGNlMmEyMDQ1OTRiY2E2N2FiNjk3OWFmNTdmZmM2NzgzMGJjZTJkNzliYTAwNGU1MzJhMDBkNiIsInRhZyI6IiJ9/eyJpdiI6InRjWTZqTGZRdE9ZTUwvWGtRWkNXUVE9PSIsInZhbHVlIjoiZ0ZVMktBekloQ0JYbWVseEI2eXRvQT09IiwibWFjIjoiZDAyMDllMzgzYjI4NzMzYjE3ZTIxMTEwMzUwZDdiNmZhMGZiYjVmMDc2ZTUyMGY0NzQ1MzQxNDYyNTQyMGE5MiIsInRhZyI6IiJ9/eyJpdiI6IlluZFhaTG92SUM1T2U4RndlVnBSeUE9PSIsInZhbHVlIjoiamxCUXU2cmRNZC95WUU2cWk0M2RJdz09IiwibWFjIjoiNTRiMjU0N2YzOGU4M2JlNzBlYjhiZGIyMTk3ZDU3YjE4ZjZiMThiOGYzYmNlMTYzOWYzNDU3ZjAwNjlkODczNiIsInRhZyI6IiJ9"
+                    }
+                ]
+            },
+            bihar2020: {
+                title: "Bihar Legislative Assembly election, 2020",
+                totalCandidates: 4,
+                candidates: [
+                    {
+                        name: "NEHAL AKHTAR",
+                        constituency: "77-MAHISHI",
+                        votes: 629,
+                        affidavitLink: null
+                    },
+                    {
+                        name: "DROPADI DEVI",
+                        constituency: "78-KUSHESHWAR ASTHAN (SC)",
+                        votes: 684,
+                        affidavitLink: null
+                    },
+                    {
+                        name: "SATYA NARAYAN PASWAN",
+                        constituency: "79-GAURA BAURAM",
+                        votes: 623,
+                        affidavitLink: null
+                    },
+                    {
+                        name: "SUNIL KUMAR",
+                        constituency: "230-GAYA TOWN",
+                        votes: 221,
+                        affidavitLink: null
+                    }
+                ]
+            },
+            bihar2025: {
+                title: "Bihar Legislative Assembly election, 2025",
+                totalCandidates: 1,
+                candidates: [
+                    {
+                        name: "SATYA NARAYAN PASWAN",
+                        constituency: "KUSHESHWAR ASTHAN (SC)",
+                        votes: 5127,
+                        affidavitLink: null
+                    }
+                ]
+            },
+
+        };
+
+        // DOM Elements
+        const electionSelect = document.getElementById('electionSelect');
+        const candidatesContainer = document.getElementById('candidatesContainer');
+        const noSelection = document.getElementById('noSelection');
+        const electionSummary = document.getElementById('electionSummary');
+        const summaryText = document.getElementById('summaryText');
+
+        // Event Listener
+        electionSelect.addEventListener('change', function () {
+            const selectedElection = this.value;
+
+            if (selectedElection === '') {
+                noSelection.style.display = 'block';
+                candidatesContainer.innerHTML = '';
+                electionSummary.style.display = 'none';
+                return;
+            }
+
+            noSelection.style.display = 'none';
+            const data = electionData[selectedElection];
+
+            // Show summary
+            electionSummary.style.display = 'block';
+            summaryText.innerHTML = `<i class="bi bi-flag me-2"></i>${data.title} - ${data.totalCandidates} Candidate(s)`;
+
+            // Generate candidate cards
+            let html = '';
+            data.candidates.forEach((candidate, index) => {
+                html += `
+                    <div class="col-sm-6 col-lg-4 col-xl-3">
+                        <div class="card h-100 shadow border-0">
+                            <div class="card-header bg-danger text-white text-center py-2">
+                                <small class="mb-0"><i class="bi bi-person-fill me-1"></i>Candidate ${index + 1}</small>
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <i class="bi bi-person-fill text-danger" style="font-size: 2.5rem;"></i>
+                                    </div>
+                                </div>
+                                <h6 class="card-title text-danger fw-bold mb-2">${candidate.name}</h6>
+                                <p class="mb-1 small"><i class="bi bi-flag-fill text-muted me-1"></i>Mazdoor Ekta Party</p>
+                                <p class="mb-2 small"><i class="bi bi-geo-alt-fill text-muted me-1"></i>${candidate.constituency}</p>
+                                ${candidate.votes ? `<p class="mb-2"><span class="badge bg-success">${candidate.votes.toLocaleString()} Votes</span></p>` : ''}
+                                ${candidate.affidavitLink ? `<a href="${candidate.affidavitLink}" target="_blank" class="btn btn-outline-danger btn-sm me-1"><i class="bi bi-file-earmark-text me-1"></i>Affidavit</a>` : ''}
+                                ${candidate.form20Link ? `<a href="${candidate.form20Link}" target="_blank" class="btn btn-outline-primary btn-sm"><i class="bi bi-file-pdf me-1"></i>Form 20</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            candidatesContainer.innerHTML = html;
+        });
+    </script>
+</body>
+
+</html>
